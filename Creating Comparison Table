@@ -1,0 +1,18 @@
+#First we make the table which will take the country, happiness rank, year, and gdp per capita from Switzerland, China, and India and put them into one table to make comparisons
+
+CREATE TABLE example1 AS SELECT  country, happiness_rank,economy_gdp_per_capita, '2015'  AS Year FROM "WHI 2015" WHERE country IN ('Switzerland','China','India')
+UNION
+SELET country, happiness_rank,economy_gdp_per_capita, '2016' AS Year FROM "WHI 2016" WHERE country IN ('Switzerland','China','India')
+UNION
+SELECT country, CAST(happinessrank AS INTEGER), CAST(economygdppercapita AS NUMERIC(7,5)), '2017'  AS Year FROM "WHI 2017" WHERE country IN ('Switzerland','China','India')
+UNION
+SELECT country_or_region, Overall_rank, GDP_per_capita, '2018' AS Year FROM "WHI 2018" WHERE country_or_region IN ('Switzerland', 'China', 'India')
+UNION
+SELECT country_or_region, Overall_rank, GDP_per_capita, '2019' AS Year FROM "WHI 2019" WHERE country_or_region IN ('Switzerland', 'China', 'India');
+
+#Now that we have created our large table to compare the happiness rank and GDP of Switzerland, China, and India, we rename it by and order each row first by country name, then 
+by year. We can do all of this in one step by creating a new table.
+
+CREATE TABLE comparison AS SELECT * FROM example1 ORDER BY country, year;
+
+#All World Happiness Index or WHI files are uploaded and can be viewed for reference

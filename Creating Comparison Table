@@ -1,4 +1,5 @@
-#First we make the table which will take the country, happiness rank, year, and gdp per capita from Switzerland, China, and India and put them into one table to make comparisons
+#First we make the table which will take the country, happiness rank, year, and gdp per capita from Switzerland, China, and India from  the World Health Index 2015-2019 SQL files
+#Put them into one table to make comparisons
 
 CREATE TABLE example1 AS SELECT  country, happiness_rank,economy_gdp_per_capita, '2015'  AS Year FROM "WHI 2015" WHERE country IN ('Switzerland','China','India')
 UNION
